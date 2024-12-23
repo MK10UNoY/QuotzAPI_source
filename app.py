@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return render_template('home.html')
+    return render_template('templates/index.html')
 
 @app.route('/register_user')
 def register():

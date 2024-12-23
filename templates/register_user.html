@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Key Registration</title>
+    <!-- Tailwind CSS CDN -->
+    <style>
+        /* Animated Background */
+        body {
+            background: radial-gradient(#00ffbd, #00c6ff, #01aab6, #76ffdd);
+            background-size: 800% 800%;
+            /* Large background to allow for smooth movement */
+            animation: gradientAnimation 12s linear infinite;
+            /* Set animation duration */
+        }
+
+        @keyframes gradientAnimation {
+
+            0%,
+            100% {
+                background-position: 0% 27%;
+                /* Starting position */
+            }
+
+            20% {
+                background-position: 50% 40%;
+                /* Move to 20% position */
+            }
+
+            40% {
+                background-position: 100% 53%;
+                /* Move to 40% position */
+            }
+
+            60% {
+                background-position: 50% 4%;
+                /* Move to 60% position */
+            }
+
+            80% {
+                background-position: 20% 27%;
+                /* Move to 80% position */
+            }
+        }
+
+        /* Bouncing Ball Animation */
+        .ball0 {
+            height: 60px;
+            width: 60px;
+            background: url('https://res.cloudinary.com/dyeya9x0b/image/upload/v1734875540/image_yi9g31.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: absolute;
+            animation: bounce 2s ease-in-out infinite;
+            animation-delay: 0s;
+            z-index: 4;
+            top: 25%;
+            left: 20%;
+        }
+
+        .ball1 {
+            height: 60px;
+            width: 60px;
+            background: url('https://res.cloudinary.com/dyeya9x0b/image/upload/v1734875694/image_ld81c4.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: absolute;
+            animation: bounce 2s ease-in-out infinite;
+            animation-delay: -1s;
+            bottom: 15%;
+            right: 20%;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateX(-40px);
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+
+            /* For screens with maximum screen width of 480px or LESS */
+            .ball0,
+            .ball1 {
+                top: 15%;
+            }
+
+            .ball0 {
+                left: 10%;
+            }
+
+            .ball1 {
+                right: 10%;
+                rotate: 0deg;
+                animation-delay: -1s;
+            }
+
+            @keyframes bounce {
+
+                0%,
+                100% {
+                    transform: translateY(0);
+                }
+
+                50% {
+                    transform: translateY(-40px);
+                }
+            }
+        }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Simulated Verify Email Button Logic
+        function handleVerifyButton() {
+            const email = document.getElementById('email').value;
+            if (!email) {
+                alert('Please enter your email.');
+                return;
+            }
+
+            // Fetch email verification status (simulate with AJAX)
+            fetch(`/api/verification_status?email=${email}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.email_verified) {
+                        alert('Email verified successfully!');
+                    } else {
+                        alert('Email verification pending. Please check your inbox.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An error occurred. Please try again.');
+                });
+        }
+    </script>
+</head>
+
+<body class="bg-gray-900 font-sans leading-normal tracking-normal">
+    <h2 class="flex justify-center pt-4 text-7xl font-semibold text-blue-800"><a href="/">Quotz API</a></h2>
+    <!-- Bouncing Balls -->
+    <div class="">
+        <div class="ball0"></div>
+        <div class="ball1"></div>
+    </div>
+    <div class="min-h-screen flex items-center justify-center relative z-10">
+        <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md ml-2 mr-2">
+            <h1 class="text-3xl font-semibold text-center text-gray-800 mb-6">Register for an API Key</h1>
+
+            <form action="/register_user" method="POST" class="space-y-6">
+                <!-- Username Field -->
+                <div>
+                    <label for="username" class="block text-gray-700 font-semibold mb-2">Username:</label>
+                    <input type="text" id="username" name="username" required
+                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+
+                <!-- Email Field -->
+                <div>
+                    <label for="email" class="block text-gray-700 font-semibold mb-2">Email:</label>
+                    <input type="email" id="email" name="email" required
+                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <button onclick="handleVerifyButton()"
+                        class="mt-4 w-full py-2 bg-green-500 text-white font-semibold rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500">
+                        Verify Email
+                    </button>
+
+                </div>
+                <!-- Buffer Message -->
+                <div id="bufferMessage" class="hidden text-center text-blue-600 font-semibold">
+                    Please verify your email. A verification link has been sent to your email address.
+                </div>
+
+                <!-- Plan Selection -->
+                <div>
+                    <label for="plan" class="block text-gray-700 font-semibold mb-2">Select Plan:</label>
+                    <select id="plan" name="plan" required
+                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="free">Free (100 calls/day)</option>
+                        <option value="basic">Basic (1000 calls/day)</option>
+                        <option value="premium">Premium (5000 calls/day)</option>
+                    </select>
+                </div>
+
+                <!-- Submit Button -->
+                <div>
+                    <button type="submit" id="generateButton" disabled
+                        class="w-full py-2 bg-gray-400 text-white font-semibold rounded-md cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        Generate API Key
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>

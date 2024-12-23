@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quotes API Service</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 1.5em;
+            text-align: center;
+        }
+
+        main {
+            padding: 2em;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #007bff;
+        }
+
+        .btn {
+            display: flex;
+            background-color: #007bff;
+            color: white;
+            height: 50px;
+            width: 230px;
+            justify-content: center;
+            align-items: center;
+            padding: 0.8em 1.2em;
+            text-decoration: none;
+            text-align: center;
+            border-radius: 5px;
+            font-size: 1em;
+            position: sticky;
+            bottom: 10%;
+            font-weight: bold;
+            box-shadow: #ffd102 0px 2px 15px;
+        }
+
+        .popper {
+            animation: pop 2500ms ease infinite;
+        }
+
+        @keyframes pop {
+
+            0%,
+            100% {
+                /* font-size: 1em; */
+                scale: 1.0;
+            }
+
+            50% {
+                /* font-size: 1.5em; */
+                color: rgb(255, 255, 26);
+                scale: 1.5;
+            }
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .params-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2em 0;
+        }
+
+        .params-table th,
+        .params-table td {
+            border: 1px solid #ddd;
+            padding: 0.8em;
+            text-align: left;
+        }
+
+        .params-table th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1em;
+            background-color: #f1f1f1;
+            margin-top: 2em;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1 style="color: #bdceee;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+            Welcome to the
+            <b style="color: #ffffff;">Quotz API</b> guide
+        </h1>
+        <p>Get inspired with tailored quotes on demand.</p>
+    </header>
+    <main>
+        <h2>What is the Quotz API?</h2>
+        <p>The Quotz API is a small service designed to provide motivational and inspirational quotes based on your
+            preferences. Perfect for apps, websites, and personal projects!</p>
+
+        <h2>How to Use the API</h2>
+        <p>Make a GET request to the API endpoint with the following parameters to retrieve quotes:</p>
+
+        <table class="params-table">
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                    <th>Required</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>api</strong></td>
+                    <td>Your unique API key. Register to get your key.</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td><strong>qn</strong></td>
+                    <td>Number of quotes to retrieve (e.g., 1, 5, 10).</td>
+                    <td>Optional (default: 1)</td>
+                </tr>
+                <tr>
+                    <td><strong>qs</strong></td>
+                    <td>Quote size: <strong>small</strong>, <strong>medium</strong>, or <strong>long</strong>.</td>
+                    <td>Optional (default: small)</td>
+                </tr>
+                <tr>
+                    <td><strong>tag</strong></td>
+                    <td>Filter quotes by a specific tag (e.g., inspirational, life).</td>
+                    <td>Optional</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Example API Calls</h2>
+        <p>Retrieve 3 short quotes about life:</p>
+        <code>GET /quotes?api=your_api_key&qn=3&qs=small&tag=life</code>
+
+        <p>Retrieve a single random medium-sized quote:</p>
+        <code>GET /quotes/random?api=your_api_key&qs=medium</code>
+
+
+        <section id="pricing">
+            <h2>Pricing Plans</h2>
+            <p>Choose a plan that fits your needs and get access to inspiring quotes anytime.</p>
+            <table class="params-table">
+                <thead>
+                    <tr>
+                        <th>Plan</th>
+                        <th>Features</th>
+                        <th>Pricing</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Free</strong></td>
+                        <td>
+                            <ul>
+                                <li>100 quotes per day</li>
+                                <li>Access to small quotes</li>
+                                <li>Basic support</li>
+                            </ul>
+                        </td>
+                        <td>0 INR</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Basic</strong></td>
+                        <td>
+                            <ul>
+                                <li>1000 quotes per day</li>
+                                <li>Access to small and medium quotes</li>
+                                <li>Priority support</li>
+                            </ul>
+                        </td>
+                        <td>50 INR/6months</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Premium</strong></td>
+                        <td>
+                            <ul>
+                                <li>5000 quotes per day</li>
+                                <li>Access to all quote sizes</li>
+                                <li>Premium support</li>
+                                <li>Tag-based filtering</li>
+                            </ul>
+                        </td>
+                        <td>100 INR/6months</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>Ready to choose a plan? Register now and get started with inspiring quotes!</p>
+        </section>
+        <h2>Get Started</h2>
+        <p>Register now to get your API key and start exploring the power of motivational quotes!</p>
+        <a href="/register_user" class="btn">
+            <p class="popper">Register for API Key</p>
+        </a>
+    </main>
+    <footer>
+        <p>Quotes API Service © 2024</p>
+    </footer>
+</body>
+
+</html>

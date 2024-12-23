@@ -88,6 +88,3 @@ def multiple_quotes(count):
 
     # Return the requested number of quotes (or all if fewer than requested)
     return jsonify(random.sample(filtered_quotes, min(count, len(filtered_quotes))) if filtered_quotes else {"error": "No matching quotes found"})
-
-if __name__ == '__main__':
-    api.run()

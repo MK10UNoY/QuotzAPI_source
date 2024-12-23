@@ -1,0 +1,13 @@
+{
+    "users": [
+        {
+            "username": "Mrinmoy Koiri",
+            "email": "mrinmoyk.dev@gmail.com",
+            "plan": "premium",
+            "verified": true,
+            "api_key": "498f3cb8-0f4e-431b-88a7-c03f044fafe5",
+            "usage_limit": 1000,
+            "payment_status": "n/a"
+        }
+    ]
+}

@@ -1,5 +1,5 @@
 from flask import Flask
-from backend.api_routes import api
+# from backend.api_routes import api
 from flask import render_template
 
 app = Flask(__name__)

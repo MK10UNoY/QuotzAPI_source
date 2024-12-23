@@ -32,7 +32,7 @@ def require_api_key():
 
 @api.route('/quotes', methods=['GET'])
 def get_quotes():
-    require_api_key()
+    #require_api_key()
     # Get query parameters
     api = request.args.get('api', None)  # Placeholder for an additional parameter if needed
     qn = min(int(request.args.get('qn', 1)), 10)  # Max 10 quotes at a time and Number of quotes required, default is 1
@@ -54,7 +54,7 @@ def get_quotes():
 
 @api.route('/quotes/random', methods=['GET'])
 def random_quote():
-    require_api_key()
+    #require_api_key()
     # Get query parameters
     tag_filter = request.args.get('tag', None)
     qs = request.args.get('qs', 'small').lower()  # Quote size, default is 'small'

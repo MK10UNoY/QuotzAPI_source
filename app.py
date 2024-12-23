@@ -5,7 +5,7 @@ from flask import render_template
 app = Flask(__name__)
 
 # Register the blueprint for API routes
-app.register_blueprint(api, url_prefix='/api')
+# app.register_blueprint(api, url_prefix='/api')
 
 @app.route('/')
 def home():

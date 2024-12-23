@@ -1,0 +1,17 @@
+# Byte-compiled files
+*.pyc
+*.pyo
+__pycache__/
+
+# Virtual environments
+venv/
+
+# Logs and temporary files
+*.log
+*.tmp
+
+# Secrets and API keys
+/keys.json
+
+# Development tools and IDEs
+.vscode/

@@ -12,7 +12,6 @@ venv/
 
 # Secrets and API keys
 /keys.json
-/quotes.json
 
 # Development tools and IDEs
 .vscode/
